@@ -1,18 +1,18 @@
 fn main() {
+ let     exists: bool = std::path::Path::new(".\\vector.txt").exists();
+ let mut input : String = String::new()                               ;
+
+ if exists {
+  input = std::fs::read_to_string(".\\vector.txt").expect("Failed file reading!");
+
+ }//if exists {
+
  loop {
-  let     exists: bool = std::path::Path::new(".\\vector.txt").exists();
-  let mut input : String = String::new()                               ;
-
-  if exists {
-   input = std::fs::read_to_string(".\\vector.txt").expect("Failed file reading!");
-
-  }//if exists {
-
-  if input.trim().is_empty() {
+  if !exists || input.trim().is_empty() {
    println!("\r\n\r\ninput:");
 
    std::io::stdin().read_line(&mut input).expect("Input failed");
-  }//if input.trim().is_empty() {
+  }//if !exists || input.trim().is_empty() {
 
   input = input.replace("\n", "");
   input = input.replace("\r", "");
