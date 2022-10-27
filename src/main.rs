@@ -8,11 +8,23 @@ fn main() {
  }//if exists {
 
  loop {
-  if !exists || input.trim().is_empty() {
+  if exists {
+   if input.trim().is_empty() {
+    println!("\r\n\r\ninput:");
+
+    std::io::stdin().read_line(&mut input).expect("Input failed");
+   }//if input.trim().is_empty() {
+
+  } else {//if exists {
+   if !input.trim().is_empty() {
+    input = String::new();
+
+   }//if !input.trim().is_empty() {
+
    println!("\r\n\r\ninput:");
 
    std::io::stdin().read_line(&mut input).expect("Input failed");
-  }//if !exists || input.trim().is_empty() {
+  }//} else {//if exists {
 
   input = input.replace("\n", "");
   input = input.replace("\r", "");
