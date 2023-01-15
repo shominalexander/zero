@@ -1,3 +1,15 @@
+fn request() -> String {
+ let mut value: String = String::new();
+
+ std::io::stdin().read_line(&mut value).expect("Input failed");
+
+ value = value.trim().to_string();
+ value = value.replace("\n", "") ;
+ value = value.replace("\r", "") ;
+
+ value
+}//fn request() -> String {
+
 fn main() {
  let     exists: bool = std::path::Path::new(".\\vector.txt").exists();
  let mut input : String = String::new()                               ;
@@ -12,22 +24,14 @@ fn main() {
    if input.trim().is_empty() {
     println!("\r\n\r\ninput:");
 
-    std::io::stdin().read_line(&mut input).expect("Input failed");
+    input = request();
    }//if input.trim().is_empty() {
 
   } else {//if exists {
-   if !input.trim().is_empty() {
-    input = String::new();
-
-   }//if !input.trim().is_empty() {
-
    println!("\r\n\r\ninput:");
 
-   std::io::stdin().read_line(&mut input).expect("Input failed");
+   input = request();
   }//} else {//if exists {
-
-  input = input.replace("\n", "");
-  input = input.replace("\r", "");
 
   if &input[..] == "exit" {
    break;   
